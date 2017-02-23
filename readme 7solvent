@@ -1,0 +1,154 @@
+
+9static_x.py: slit system, average along x.(Most advanced, equipped with DC calculation.)
+9static_z.py:  slit average along z.
+9pore_static_z.py: for pslit/pcyl pore, plot CA location and the profiles nearby, not the whole way, along z, i.e. take the z-coordinate value.
+9cnt_static_z.py for cnt system, axis along z .
+9pslit_static_y.py: 
+
+9daadiffusion.py: all atom diffusion plot
+9dcomdiffusion: com diffusion coefficient from com velocity 
+9xvcf.py prints out vacf/vccf contributions, distinguishes all x y z contributions.
+9xdcomdiffusion.py prints out the contribution to SDC/DDC from only one direction (x/y/z).
+
+
+0 old slits
+574 not properly converged. -0.9v
+575: close, -0.6v
+576: not enough space
+
+1 NEW SLIT WIDE: 
+
+
+Capacitance:
+sumCAchg*1.6e-19/(4*12.334*12.818*1e-20)/pote
+
+799 52p50n
+800 50p50n
+824 48p50n  
+825(bulk NVT)
+Iter2 makes more sense than Iter1. DDC seems more reasonable than NPT.
+909 (bulk NPT, msd is better, vcf worse) D_c=2.60e-11m^2/s D_a=1.89e-11m^2/s
+Long DDC makes sense, short DDC doesn’t.
+
+690 stage4 bulk NVT DCE+IL, D_c=2.258e-10m^2/s D_a = 2.091e-10m^2/s
+solvent makes DDC (anti-)/correlation think opposite.
+749 stage4 bulk NVT DCE+IL, D=1.312 e-9for cation, D_a =1.297e-0m^2/s for anion 
+Cation and anion DDC acting in sync, same pos and neg cycle, SDC not converging well for cation and anion. Furthermore, in 895 slit pos2, cation and anion DDC  are still acting in sync, even for x component only (perpendicular to slit)
+
+(799/800 only stage2). 
+824 IL pos2(48p50n) 0.34V/0.435V
+800 IL neu -0.14V 
+787=799 IL neg2 -0.668V/-0.7V 
+893 rerun 799 with +5A wider, -0.568V , structure/chg comparison between 893 and 799 doesn’t make much sense
+4*1.6e-19/(2*4*12.334*12.818*1e-20)/(0.7+0.34) = 0.0487 
+4*1.6e-19/(2*4*12.334*12.818*1e-20)/(0.568+0.34) = 0.573
+
+783 ACN neg2  -0.58V 
+894 ACN +5A wider, -0.5527V/-0.588  
+895 ACN +5A pos2 0.494V/0.485V
+C=4*1.6e-19/(2*4*12.334*12.818*1e-20)/(0.494+0.58) = 0.0471 F/m^2
+
+781 DCE neg2 -0.549V 
+896 (+5A) pos2 0.719V/0.79V/0.683V/
+C=4*1.6e-19/(2*4*12.334*12.818*1e-20)/(0.72+0.549) = 0.0398 F/m^2 
+
+
+1.1 Slit pores
+slit7 = 9.8A  2p2nx3 
+2*(4.764-2.0)*24.6691*25.6369*400/166715 = 8.4 pair IL (400 at 166715 bulk)
+*400/84409 = 16.5 molecule 20% DCE/IL (12/3)
+*400/62994 = 22.5 molecule 20% AN/IL (16/4)
+(9.8-4)*24.67*25.64*400/166715 = 8.80 pair
+slit11 = 14.8  4p4nx3
+(14.8-4)*24.67*25.64*400/166715 = 16.39 pair
+slit14 =18.8A  6p6nx3
+(18.8-4)*24.67*25.64*400/166715 = 22.46 pair
+
+slit7 
+pos6 2p4nx3 job899 0.463V[constant]
+neg6 2p4nx3 job911 -1.203V/-1.193V  
+C = 12*1.6e-19/(3*2*4*12.334*12.818*1e-20)/(1.193+0.463) = 0.0305 
+
+neg6  931 -3.224V  (if length+0.3A=9.8A, job927 -3.261V)
+pos6  930 1.335V
+C = 12*1.6e-19/(2*4*12.334*12.818*1e-20)/(3.224+1.335) = 0.033
+
+slit8
+neg6 14p8n 934 —2.811V/-2.828V
+pos6 8p14n 939 3.083V
+C = 12*1.6e-19/(2*4*12.334*12.818*1e-20)/(3.083+2.828) = 0.025
+
+slit9
+neg6 16p10n -1.524V
+pos6 941 10p16n 3.147
+C = 12*1.6e-19/(2*4*12.334*12.818*1e-20)/(3.147+1.524) = 0.0325
+
+slit10
+neg6 935 18p12n -1.726V/-1.716V
+pos6 942 12p18n 1.829V
+C = 12*1.6e-19/(2*4*12.334*12.818*1e-20)/(1.829+1.726) = 0.0427
+
+slit11 
+pos6 4p6nx3  job902 0.80V/0.76V/0.73V highly asymmetric profiles
+neg6 6p4nx3  job912 -0.763V/-0.746V  [Two counter-ion peaks streached out, unlike slit7, origin of C increase??]
+C = 12*1.6e-19/(3*2*4*12.334*12.818*1e-20)/(0.73+0.763) = 0.033
+
+slit12
+neg6 22p16n -1.847V
+
+neg2
+pos2
+
+slit13
+neg2 
+pos2
+
+slit14
+neg2 
+pos2
+
+2 SP single plane
+Won’t work when solvents exist, solvents flying around across boundary, averaging to get mass density ends up density onto the electrode, slit necessary!!!
+
+3 PORE 
+721 solvent
+723 solvent occupies 798 reproduce.
+742
+729: pslit1
+
+745: dcapcnt1 4n solvent stuck in left of Dcapcnt. anion as counter-ion fully crystalline near both electrodes.
+746 dcapcnt 0
+747 dcapcnt 4p
+727 320DCE+80IL,highly neutral distribution, and phase of solvents and IL.
+731 80IL 33343A^3. 1.559g quite OK. 
+748 180DCE+20IL too dilute for Dsph. 85A gap, however, 29.82Ax24.59A.
+754: fill in ACN 180ACN+40IL+4p
+755-757-758 80ILs between dcapcnt Too dense
+dcapcnt-IL series, charges on CA atoms not neutralized, pot unwatchable.
+
+3.1 pslit1
+21.3/17.2/120A (0.26-0.74)~8A along ys, coordgrl-coordgrr == (0.50-0.60) along zs for pore.
+Can’t treat  it as one-dimensional sys as only total net charges !=0. Pot varying beyond graphene.
+903: For pslit1 neg2, Twos Cation wrapping an anion, stuck in that config throughout 2ns.
+Number density has cation’s single peak in the middle, and anion’s lower peak on the side.
+-0.717V with net -0.12|e|
+904: For pslit1 pos2, One large anion peaks and one smaller.
+-0.124/-0.137V with net 0.69/0.80|e|
+C=4*1.6e-19/(2*21.3*(0.6-0.5)*120*1e-20)/(0.717-0.13) = 0.21328043978427
+
+Guidance for setting up cell
+C2mim Tf2N density 298K \cite{Vatamanu:12}
+391.31g/mol
+1.522g/cm^3
+0.0023423 pair/AA^3
+
+while medea results 
+298K by 537job
+1.583g/cm^3 
+0.0024362 pair/AA^3
+
+333K
+1.487g/cm^3
+0.0022884 pair/AA^3
+50/0.0023423/24.66/25.63=34.57A
+80*(0.7526-0.26771) = 38.8A accounting for interface vacuum and 2 extra cation.
