@@ -1,0 +1,118 @@
+WJZ’s polar additive  # looks at solvents. Try a certain geometry, but with varying concenetration of the two solvents.
+WJZ generic # looks at slit and cylindrical pore
+
+
+BULK density
+abc=1/60/1 supercell 147.57A along b direction
+CNT radius
+cnt5 3.415A 2.2pair
+cnt6 4.089A  4.85pair
+cnt7 4.764A 8.5 pair
+cnt8  5.44A  13.2 pair
+cnt9  6.12A  18.8 pair
+cnt10  6.793A  25.5 pair
+cnt11  7.47A   33.3pair
+cnt12  8.147A  42.0pair
+cnt13  8.824A  51.8pair
+cnt14  9.50A   62.6pair
+cnt15  10.178A  74.4 pair
+
+cnt7
+pi*(4.764-2.0)^2*147.57*400/166715 = 8.5 pair IL (400 at 166715 bulk)
+pi*(4.764-2.0)^2*147.57*400/84409 = 16.5 molecule 20% DCE/IL (12/3)
+pi*(4.764-2.0)^2*147.57*400/62994 = 22.5 molecule 20% AN/IL (16/4)
+cnt10
+pi*(6.79-2.0)^2*147.57*400/166715 = 25.5pair
+cnt11
+pi*(7.47-2.0)^2*147.57*400/166715 = 33.3 pair IL (in reality, 30 pairs will occupy 100%)
+cnt14
+pi*(9.5-2.0)^2*147.57*400/166715 = 62.5 pair IL
+
+
+cnt7 significant charge polarization, pos2/neg2 all pushed cat/ani towards the middle…
+848 neu -3.1976V  11p11n more structured than 10p10n(-3.04V). and 9p9n(-2.912V)/10p9n(-2.897V)/9p10n(-2.831V) 【From 9p9n->10p9n  negative C.】  8p8n(-2.61V) 6p6n(-1.94V). Neu series get more structured and slightly pushed towards CNT surface as number of ions grow. Anion stuck in the outside, cation in the inside, even more so when CNT is charged, regardless of polarity.
+850 (9v11) neg2 -3.14V 
+851 (9v11) pos2  -2.978V  
+-4*1.6e-19/(2*pi*4.764*147.57*1e-20)/(-3.14+2.978) = 0.0894 
+
+905 pos6 (0p6n) -0.806/-0.804V
+906 pos6 (4p10n) -2.054V/-2.045V
+907 neg6 (6p0n) -1.410V/-1.409V
+908 neg6 (10p4n) -2.643V [constant]
+C (0v6) = 12*1.6e-19/(2*pi*4.764*147.57*1e-20)/(1.410-0.804) = 0.0717
+C (4v10) = 12*1.6e-19/(2*pi*4.764*147.57*1e-20)/(2.643-2.045) = 0.0726 
+
+921 pos6 6p12n -2.555V 
+922 neg6 12p6n -3.109V
+C (6v12) = 12*1.6e-19/(2*pi*4.764*147.57*1e-20)/(3.109-2.555) = 0.0784
+
+cnt7DCE (12+3+3)
+neu -0.594V 
+pos1 -0.849V 
+neg1 -0.955V
+2*1.6e-19/(2*pi*4.764*147.57*1e-20)/(0.955-0.849) = 0.0683
+(12+0+6)
+915 pos6 -0.534V/-0.519/-0.508V 
+920 neg6 -0.943V/-0.937V
+12*1.6e-19/(2*pi*4.764*147.57*1e-20)/(0.940-0.508) = 0.1006
+
+cnt7ACN （16+4+4）【negative C, makes no sense】
+neu -1.677V  pos1 -1.884V neg1 -1.557V 
+cnt7ACN （12+3v4 or 3v5) 【negative C still, makes no sense】
+872 pos1 -1.660V
+873 neg1 -1.412V
+878 neg2 -1.646V
+879 pos2 -2.338V (Erroneous, To further delete Atom 1870)
+
+(16+0+6)
+913 neg6 -2.22V/-2.20V/-2.21V 
+916 pos6 -2.06V/-2.07V
+12*1.6e-19/(2*pi*4.764*147.57*1e-20)/(2.21-2.07) = 0.310 
+
+
+cnt9
+18.8 pair as center
+
+925 pos6 20p26n 1.59V
+926 neg6 26p20n -0.164V
+C = 12*1.6e-19/(2*pi*6.116*147.57*1e-20)/(1.59+0.164) = 0.019 F/m^2
+953  pos6 16p22n 1.392V
+952  neg6 22p16n -0.214V
+
+cnt10 short(x10, 24A)
+802/803: cnt10 5p6n(1.32V)/6p5n(-0.49V), compact 16x16A x24.595A long in z direction, one-sixth of the long tube.
+pi*(6.793-2.0)^2*147.57/6*400/166715 = 4.25 pair
+C=-1.6e-19/(2*pi*6.793*147.57/6*1e-20)/(-0.46-0.5)  = 0.015F/m^2 = 1.5\miuF/{cm^2}
+# from 0.5V for 5.5 pair and -0.46V for 6p5n.
+867 5p5n tight  0.56V
+868 6p5n -0.46V rerun 803 wider cell, the mass turns out to be less peaked near CNT than 803(-0.43V), so the periodic boundary requires a wide cell ().
+869 6p6n tight 0.42V (VOLTAGE DROPPED! BUT much more structured.)
+
+cnt10 long(x60 147.57A) 25v27【negative C in one case, but high C in another】
+886: 25p25n 1.128V
+888 pos2 0.876V/0.830V
+889 neg2 0.7552/0.930V
+C=4*1.6e-19/(2*pi*6.793*147.57*1e-20)/(0.930-0.830) = 0.1016 F/m^2
+
+923 neg6 29p23n 0.828V
+924 pos6 23p29n 1.142V
+C = 12*1.6e-19/(2*pi*6.793*147.57*1e-20)/(1.142-0.828) = 0.0971 F/m^2
+
+
+cnt11 28v30:
+838L neg2 0.264V push dow both pos and neg peaks inside, except the compact layer, slight up.
+831: neu0 30p30n (0.5135V) 28p28n(0.32V) 875: 20p20n(0.22V)
+839: pos2 0.294V push up both pos and neg peaks.
+C=-4*1.6e-19/(2*pi*7.47*147.57*1e-20)/(0.264-0.294) = 0.3080067057439 F/cm^2, makes perfect sense, just don’t go with neutral..
+
+
+23v29
+918 neg6 0.046V (20v26 919  0.123V )
+917 pos6 0.592V
+C= 12*1.6e-19/(2*pi*7.47*147.57*1e-20)/(0.592-0.046) = 0.0507 
+
+cnt14 60v62:
+880 cnt14 neu   -0.484V
+884 cnt14 neg2 -0.866V/-0.749V(second run shorter and terminated)
+887 cnt14 pos2 -0.695V/-0.591V
+4*1.6e-19/(2*pi*9.5*147.57*1e-20)/(0.749-0.591) = 0.0459
